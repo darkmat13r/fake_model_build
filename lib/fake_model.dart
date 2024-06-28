@@ -1,0 +1,3 @@
+class FakeModel {
+  const FakeModel();
+}

@@ -1,0 +1,17 @@
+targets:
+  $default:
+    builders:
+      fake_model_generator|fakeModelGeneratorFactory:
+        enabled: true
+        generate_for:
+          - lib/**/*.dart
+
+builders:
+  generators:
+    target: ":faker" # Generator name
+    import: "package:fake_model_generator/builders.dart"
+    builder_factories: ["fakeModelGeneratorFactory"]
+    build_extensions: { ".dart": [".fake.dart"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
